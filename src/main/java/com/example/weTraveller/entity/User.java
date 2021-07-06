@@ -1,13 +1,14 @@
 package com.example.weTraveller.entity;
 
 
+import com.example.weTraveller.entity.common.CommonColumn;
 import com.example.weTraveller.model.UserModel;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "users")
-public class User {
+@Table(name = "users" )
+public class User extends CommonColumn {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
