@@ -33,22 +33,7 @@ public class UserDetailsAdapter implements UserDetails{
 	 */
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		List<GrantedAuthority> authorityList = new ArrayList<GrantedAuthority>();
-
-		if(this.getAuthUser() != null){
-			// set role name
-			if(StringUtils.isNotEmpty(this.getAuthUser().getRole())) {
-				authorityList.add(new AuthorizationAdapter(this.getAuthUser().getRole()));
-			}
-
-			// set right name
-			if(this.getAuthUser().getRights() != null) {
-				for (String right : this.getAuthUser().getRights()) {
-					authorityList.add(new AuthorizationAdapter(right));
-				}
-			}
-		}
-		return authorityList;
+		return null;
 	}
 
 	/* (non-Javadoc)
