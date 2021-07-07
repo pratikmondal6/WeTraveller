@@ -34,7 +34,7 @@ public class PostController {
     LocationService locationService;
 
     @PostMapping(path = "/create-user")
-    public ResponseEntity<Object> createPost(@RequestBody PostModel postModel) {
+    public ResponseEntity<ApiResponse> createPost(@RequestBody PostModel postModel) {
         ApiResponse response = new ApiResponse(false);
         String messageCode = "";
         try {
@@ -55,7 +55,7 @@ public class PostController {
 
 
     @GetMapping(path = "/getPrivacyList")
-    public ResponseEntity<Object> getPrivacyList() {
+    public ResponseEntity<ApiResponse> getPrivacyList() {
         ApiResponse response = new ApiResponse(false);
         String messageCode = "";
         try {
@@ -71,7 +71,7 @@ public class PostController {
     }
 
     @GetMapping(path = "/getLocationList")
-    public ResponseEntity<Object> getLocationList() {
+    public ResponseEntity<ApiResponse> getLocationList() {
         ApiResponse response = new ApiResponse(false);
         String messageCode = "";
         try {
