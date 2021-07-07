@@ -24,7 +24,7 @@ public class UserController {
 
 
     @PostMapping(path = "/create-user")
-    public ResponseEntity<Object> createUser(@RequestBody UserModel userModelRequest) {
+    public ResponseEntity<ApiResponse> createUser(@RequestBody UserModel userModelRequest) {
         ApiResponse response = new ApiResponse(false);
         String messageCode = "";
         try {
