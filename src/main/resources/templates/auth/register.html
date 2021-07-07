@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>WeTraveller</title>
+    <link href="/bundle.css" rel="stylesheet">
+    <link href="/css/login.css" rel="stylesheet">
+    <link href="/css/custom.css" rel="stylesheet">
+    <meta name="theme-color" content="#563d7c">
+</head>
+<body>
+    <form id="registrationForm" action="#" th:action="@{/register}" method="post" class="form-signin"
+          autocomplete="off" th:object="${registrationModel}" onsubmit="submitButton.disabled = true; return true;">
+        <div class="text-center mb-4">
+            <a href="/"><img class="mb-2" src="/src/images/brac-logo.svg" width="130" height="72" /></a>
+            <p>Registration</p>
+            <h1 class="h3 mb-3 font-weight-normal">WE TRAVELLERS</h1>
+            <p th:if="${error}" th:text="${error}" class="help-block-error"><p>
+            <p th:if="${message}" th:text="${message}"><p>
+        </div>
+
+        <div class="form-label-group">
+            <input tabindex="1" type="text" placeholder="Name" th:field="*{name}" id="name"
+                   maxLength="250" class="form-control" required
+                   autofocus />
+            <label for="name">Name</label>
+        </div>
+        <p class="help-block-error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</p>
+
+        <div class="form-label-group">
+            <input tabindex="2" type="email" placeholder="Email" th:field="*{email}"
+                   maxLength="150" class="form-control" id="email" required/>
+            <label for="email">Email</label>
+        </div>
+        <p class="help-block-error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</p>
+
+        <div class="form-label-group">
+            <input tabindex="3" type="password" id="password" th:field="*{password}"
+                   class="form-control" placeholder="Password" required
+                   maxLength="250" minlength="1">
+            <label for="password">Password</label>
+        </div>
+        <p class="help-block-error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">password Error</p>
+
+        <button name="submitButton" tabindex="3" class="btn btn-lg btn-slum-submit btn-block" type="submit">Register</button>
+    </form>
+</body>
+</html>

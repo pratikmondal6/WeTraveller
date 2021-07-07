@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>WeTraveller</title>
+
+    <link rel="stylesheet" type="text/css" href="/resources/custom.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+<div class="container" ng-controller="PostController">
+    <div class="row">
+        <div class="col-3"></div>
+
+        <div class="col-6">
+
+            <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                <a class="nav-link active" aria-current="page" href="#home">Home</a>
+                <a class="nav-link" href="#StatusForm">Status</a>
+                <a class="nav-link" href="">My Posts</a>
+            </div>
+
+            <form id="StatusForm" name="StatusForm" role="form" novalidate aria-labelledby="StatusForm">
+
+                <div class="form-group">
+
+                    <label class="hed-lines"><b>Status</b> ({{post.postDescription == undefined ? 0 :
+                        post.postDescription.length}}/500)</label><br>
+
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"
+                              ng-model="post.postDescription"></textarea>
+                    <div>
+                        <span class="help-block-error"
+                              ng-show="StatusForm.status.$touched && StatusForm.status.$invalid">Status required</span>
+                    </div>
+                </div>
+
+                <div style="display: flex; justify-content: space-between">
+
+                    <div class="form-group" ng-class="{'has-error': StatusForm.privacyId.$invalid}">
+                        <label for="privacyId" class="control-label">Choose Privacy</label>
+                        <div id="privacyIdControls">
+                            <select id="privacyId" name="privacyId" ng-model="post.privacyId"
+                                    class="form-control">
+                                <option value="">--Select--</option>
+                                <option value="1">Public</option>
+                                <option value="F">Private</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group" ng-class="{'has-error': StatusForm.locationId.$invalid}">
+                        <div class="multiselect-dropdown">
+                            <select id="locationId"
+                                    class="input-large"
+                                    multiple
+                                    selectpicker
+                                    data-live-search="true"
+                                    data-live-search-placeholder="Select"
+                                    required name="responsibleProgram"
+                                    ng-model="post.locationId">
+                                <option ng-repeat="location in locationList" value="{{location.id}}">
+                                    {{location.locationName}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <div style="text-align: end;"></div>
+            <button type="button" style="width: 100%" class="btn btn-outline-primary">Share</button>
+
+            <div aria-labelledby="home" id="home">
+            </div>
+
+
+        </div>
+        <div class="col-3"></div>
+    </div>
+
+</div>
+
+
+<script src="/static/js/angularjs/controllers/PostController.js"></script>
+
+
+</body>
+
+</html>
+
+
+
+
+
